@@ -1,0 +1,5 @@
+.App {
+  min-height: 100vh; /* Full viewport height */
+  background-color: #fafafa; /* Matches your contacts background */
+  padding: 20px; /* Adds spacing around edges */
+}
