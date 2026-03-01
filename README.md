@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# My Contacts App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack contacts management application built with **React** (frontend) and **Node.js/Express + MongoDB** (backend).
 
-## Available Scripts
+## 🗂️ Project Structure
 
-In the project directory, you can run:
+```
+my-contacts-app/
+├── src/                  # React frontend
+│   ├── Contacts.js       # Main contacts component
+│   ├── Contacts.css      # Styles
+│   ├── App.js
+│   └── index.js
+├── backend/              # Express backend
+│   ├── server.js         # API server
+│   ├── package.json
+│   └── .env.example      # Environment variable template
+├── public/
+├── package.json          # Frontend dependencies
+└── vercel.json           # Vercel deployment config
+```
 
-### `npm start`
+## ✨ Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 📇 View all contacts in a card grid layout
+- ➕ Add new contacts (saved to localStorage)
+- 💾 Save contacts to MongoDB via REST API
+- ✏️ Edit contacts (local or API)
+- 🗑️ Delete contacts (local or API)
+- 🔄 Three contact types: Initial (read-only), Local, API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Getting Started (Local Development)
 
-### `npm test`
+### 1. Frontend Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+# Install dependencies
+npm install
 
-### `npm run build`
+# Start frontend (runs on http://localhost:3000)
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Backend Setup
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+cd backend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Install dependencies
+npm install
 
-### `npm run eject`
+# Create .env file
+cp .env.example .env
+# Then edit .env with your MongoDB URI
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Start backend (runs on http://localhost:5000)
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🌐 Deploying to Vercel
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisites
+- A [Vercel](https://vercel.com) account
+- A [MongoDB Atlas](https://cloud.mongodb.com) cluster
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Steps
 
-## Learn More
+1. **Push your code to GitHub**
+2. **Import the repository on Vercel**
+3. **Set environment variables** in Vercel dashboard:
+   - `MONGODB_URI` → Your MongoDB Atlas connection string
+4. **Deploy!**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> ⚠️ **Important:** Never commit your `.env` file. Use `.env.example` as a template.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🛠️ Tech Stack
 
-### Code Splitting
+| Layer     | Technology                   |
+|-----------|------------------------------|
+| Frontend  | React 19, CSS                |
+| Backend   | Node.js, Express             |
+| Database  | MongoDB (Mongoose)           |
+| Hosting   | Vercel                       |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📡 API Endpoints
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Method | Route               | Description         |
+|--------|---------------------|---------------------|
+| GET    | `/api/contacts`     | Get all contacts    |
+| POST   | `/api/contacts`     | Create new contact  |
+| PUT    | `/api/contacts/:id` | Update a contact    |
+| DELETE | `/api/contacts/:id` | Delete a contact    |
+| GET    | `/api/health`       | Server health check |
